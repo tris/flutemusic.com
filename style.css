@@ -1,0 +1,48 @@
+a:link { color: #000066; }
+a:visited { color: #993366; }
+a:active { color:#36521B; }
+
+body {
+//  background-color:#CC66FF;
+}
+
+div {
+  text-align:justify;
+}
+
+#main {
+  width:750px;
+}
+
+.frontpage {
+  height:900px;
+  width:756px;
+  background-image: url(flowerflute2_soft_web.jpg);
+}
+
+.leftside {
+  margin-left:1cm;
+  line-height:14mm;
+}
+
+.links {
+  font-family:verdana,arial,tahoma;
+  font-size:large;
+  font-weight:normal;
+  font-variant: small-caps;
+}
+
+.review {
+  font-family:verdana,arial,tahoma;
+  font-style:italic;
+  font-size:small;
+  font-weight:bold;
+  color:midnightblue;
+}
+
+.reviewer {
+}
+
+.reviewertitle {
+  font-size:90%;
+}
