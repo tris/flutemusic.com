@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist version="1" xmlns="http://xspf.org/ns/0/">
+ <title>Live performances</title>
+ <image>http://flutemusic.com/Kathy.jpg</image>
+ <info>http://flutemusic.com/</info>
+ <trackList>
+  <track>
+   <location>http://flutemusic.com/listen/dohnanyi-aria-excerpt.mp3</location>
+   <title>Excerpt from Aria Op. 48, No. 1 by Ernst von Dohnanyi</title>
+  </track>
+ </trackList>
+</playlist>

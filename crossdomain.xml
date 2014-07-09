@@ -1,0 +1,4 @@
+<cross-domain-policy>
+ <allow-access-from domain="*.flutemusic.com"/>
+ <allow-access-from domain="flutemusic.com"/>
+</cross-domain-policy>
