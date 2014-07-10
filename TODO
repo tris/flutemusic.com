@@ -4,8 +4,6 @@ http://stackoverflow.com/questions/7395520/how-does-jekyll-date-formatting-work
 
 - Start doing "posts" -- add basic blog functionality.
 
-- Smart nav bar (omit anchor tag for current page).
-
-- Figure out why some pages don't inherit default layout.
+- Figure out why pages aren't inheriting default layout (from _config.yml).
 
 - Use a more modern audio player on "listen" page.  audio.js?

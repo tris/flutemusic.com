@@ -1,0 +1,12 @@
+{% capture this %}{{ page.url | remove: '/' }}{% endcapture %}
+<span class="links">
+<a href="{{ site.baseurl }}/">Home</a>
+{% for crumb in site.data.nav %}
+{%  if this == crumb.url %}
+| {{ crumb.title }}
+{%  else %}
+| <a href="{{ site.baseurl }}/{{ crumb.url }}/">{{ crumb.title }}</a>
+{%  endif %}
+{% endfor %}
+| <a href="mailto:contact@flutemusic.com">Contact</a>
+</span>
