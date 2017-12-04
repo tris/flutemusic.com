@@ -54,7 +54,7 @@ redirect_from: /payment.html
       </optgroup>
     </select>
 
-    <button id='paymentButton'>Pay with Card</button>
+    <button id='paymentButton'>Pay with Card or Bitcoin</button>
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -67,6 +67,7 @@ redirect_from: /payment.html
         locale: 'auto',
         name: 'Purcell Flute Studios',
         description: 'Flute Lessons',
+        bitcoin: true,
         token: function(token) {
           $('input#stripeToken').val(token.id);
           $('form').submit();
