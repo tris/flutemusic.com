@@ -27,68 +27,84 @@ redirect_from: /payment.html
 </div>
 -->
 
-
 <br clear="all">
 
-
 <div class="float7Left">
-<h3>60 Minute Lessons: &nbsp; $78</h3>
-<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="WDV2MDGGUGMHJ">
-<table>
-<tr><td><input type="hidden" name="on0" value="Reserving">Reserving</td></tr><tr><td><select name="os0">
-	<option value="4 Weeks of Lessons">4 Weeks of Lessons $300.00</option>
-	<option value="5 Weeks of Lessons">5 Weeks of Lessons $375.00</option>
-	<option value="3 Weeks of Lessons">3 Weeks of Lessons $225.00</option>
-	<option value="2 Weeks of Lessons">2 Weeks of Lessons $150.00</option>
-</select> </td></tr>
-</table>
-<input type="hidden" name="currency_code" value="USD">
-<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
 
+  <form action="https://wt-d38e16bffc5a214a1dafc89e34989660-0.run.webtask.io/stripe-payment/payment?currency=USD&amount=8400&description=60%20minutes%20of%20flute%20lessons" method="POST">
+
+    <select id="amount">
+      <optgroup label="30 Minute Lessons">
+        <option value="84">2 Weeks of 30 Minute Lessons $84.00</option>
+        <option value="126">3 Weeks of 30 Minute Lessons $126.00</option>
+        <option value="168">4 Weeks of 30 Minute Lessons $168.00</option>
+        <option value="210">5 Weeks of 30 Minute Lessons $210.00</option>
+      </optgroup>
+      <optgroup label="45 Minute Lessons">
+        <option value="126">2 Weeks of 45 Minute Lessons $126.00</option>
+        <option value="189">3 Weeks of 45 Minute Lessons $189.00</option>
+        <option value="252">4 Weeks of 45 Minute Lessons $252.00</option>
+        <option value="315">5 Weeks of 45 Minute Lessons $315.00</option>
+      </optgroup>
+      <optgroup label="60 Minute Lessons">
+        <option value="168">2 Weeks of 60 Minute Lessons $168.00</option>
+        <option value="252">3 Weeks of 60 Minute Lessons $252.00</option>
+        <option value="336">4 Weeks of 60 Minute Lessons $336.00</option>
+        <option value="420">5 Weeks of 60 Minute Lessons $420.00</option>
+      </optgroup>
+    </select>
+
+    <button id='paymentButton'>Pay with Card</button>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+      crossorigin="anonymous"></script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script>
+      var handler = StripeCheckout.configure({
+        key: 'pk_live_8I5dx0CoZRIg4mNkPZjGNsVi',
+        locale: 'auto',
+        name: 'Purcell Flute Studios',
+        description: 'Flute Lessons',
+        token: function(token) {
+          $('input#stripeToken').val(token.id);
+          $('form').submit();
+        }
+      });
+
+      $('#paymentButton').on('click', function(e) {
+        e.preventDefault();
+
+        $('#error_explanation').html('');
+
+        var amount = $('select#amount').val();
+        amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+
+        amount = parseFloat(amount);
+
+        if (isNaN(amount)) {
+          $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
+        }
+        else if (amount < 5.00) {
+          $('#error_explanation').html('<p>Payment amount must be at least $5.</p>');
+        }
+        else {
+          amount = amount * 100; // Needs to be an integer!
+          handler.open({
+            amount: Math.round(amount)
+          })
+        }
+      });
+
+      // Close Checkout on page navigation
+      $(window).on('popstate', function() {
+        handler.close();
+      });
+    </script>
+
+  </form>
 
 </div>
 
-<div class="float7Left">
-<h3>45 Minute Lessons: &nbsp; $58.50</h3>
-<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="B55CGRUQ7TGRL">
-<table>
-<tr><td><input type="hidden" name="on0" value="Reserving">Reserving</td></tr><tr><td><select name="os0">
-	<option value="4 Weeks of Lessons">4 Weeks of Lessons $225.00</option>
-	<option value="5 Weeks of Lessons">5 Weeks of Lessons $281.25</option>
-	<option value="3 Weeks of Lessons">3 Weeks of Lessons $168.75</option>
-	<option value="2 Weeks of Lessons">2 Weeks of Lessons $112.50</option>
-</select> </td></tr>
-</table>
-<input type="hidden" name="currency_code" value="USD">
-<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-</div>
-
-<div class="float7Left">
-<h3>30 Minute Lessons: &nbsp; $39.00</h3>
-<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="G5KFEFDNUQTVA">
-<table>
-<tr><td><input type="hidden" name="on0" value="Reserving">Reserving</td></tr><tr><td><select name="os0">
-	<option value="4 Weeks of Lessons">4 Weeks of Lessons $150.00</option>
-	<option value="5 Weeks of Lessons">5 Weeks of Lessons $187.50</option>
-	<option value="3 Weeks of Lessons">3 Weeks of Lessons $112.50</option>
-	<option value="2 Weeks of Lessons">2 Weeks of Lessons $75.00</option>
-</select> </td></tr>
-</table>
-<input type="hidden" name="currency_code" value="USD">
-<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-</div>
 </div>
