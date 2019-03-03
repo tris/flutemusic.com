@@ -22,19 +22,121 @@ redirect_from: /listen.html
    </tr>
 </table>
 
-<table>
- <tr>
-   <td width=40></td>
-   <td width=660>
+    <link rel="stylesheet" type="text/css" href="css/foundation.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@4.0.0/dist/amplitude.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/player.css"/>
 
-<br>
+    <div class="grid-x">
+        <div id="black-player">
+          <div id="black-player-playlist">
+            <div class="black-player-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="0" data-amplitude-playlist="kpfs">
+              <img src="/Kathy.jpg">
+              <div class="song-meta-container">
+                <span class="individual-song-name">Mazurka de Salon Op. 16 by Franz Doppler (excerpt)</span>
+                <span class="individual-song-artist">Kathleen Purcell</span>
+              </div>
+            </div>
+            <div class="black-player-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="1" data-amplitude-playlist="kpfs">
+              <img src="/Kathy.jpg">
+              <div class="song-meta-container">
+                <span class="individual-song-name">Brian Boru's March (excerpt)</span>
+                <span class="individual-song-artist">Kathleen Purcell</span>
+              </div>
+            </div>
+            <div class="black-player-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="2" data-amplitude-playlist="kpfs">
+              <img src="/Kathy.jpg">
+              <div class="song-meta-container">
+                <span class="individual-song-name">Piccolo Concerto in C Op. 44 No. 11 by Antonio Vivaldi (excerpt)</span>
+                <span class="individual-song-artist">Kathleen Purcell</span>
+              </div>
+            </div>
+            <div class="black-player-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="3" data-amplitude-playlist="kpfs">
+              <img src="/Kathy.jpg">
+              <div class="song-meta-container">
+                <span class="individual-song-name">Adagio in g by Remo Giazotto, based on a theme by Tomaso Albinoni (excerpt)</span>
+                <span class="individual-song-artist">Kathleen Purcell</span>
+              </div>
+            </div>
+            <div class="black-player-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="4" data-amplitude-playlist="kpfs">
+              <img src="/Kathy.jpg">
+              <div class="song-meta-container">
+                <span class="individual-song-name">Aria Op. 48, No. 1 by Ernst von Dohnanyi (excerpt)</span>
+                <span class="individual-song-artist">Kathleen Purcell</span>
+              </div>
+            </div>
+          </div>
+          <div id="black-player-controls">
+            <img data-amplitude-song-info="cover_art_url" data-amplitude-playlist="kpfs" class="playlist-album-art"/>
+            <div class="black-player-controls-container">
+              <span data-amplitude-song-info="name" data-amplitude-playlist="kpfs" class="song-name"></span>
+              <span data-amplitude-song-info="artist" data-amplitude-playlist="kpfs" class="song-artist"></span>
 
-<object type="application/x-shockwave-flash" width="400" height="170"
-data="player.swf?playlist_url=playlist.xspf">
-<param name="movie" 
-value="player.swf?playlist_url=playlist.xspf" />
-</object>
+              <div id="progress-container-black">
+                <input type="range" class="amplitude-song-slider" data-amplitude-playlist="kpfs"/>
+                <progress id="song-played-progress-black" class="amplitude-song-played-progress" data-amplitude-playlist="kpfs"></progress>
+                <progress id="song-buffered-progress-black" class="amplitude-buffered-progress" value="0"></progress>
+              </div>
 
-</td>
-  </tr>
-</table>
+              <div>
+                <div class="amplitude-shuffle amplitude-shuffle-off" data-amplitude-playlist="kpfs" id="shuffle-black"></div>
+                <div class="amplitude-prev" data-amplitude-playlist="kpfs" id="previous-black"></div>
+                <div class="amplitude-play-pause" data-amplitude-playlist="kpfs" id="play-pause-black"></div>
+                <div class="amplitude-next" data-amplitude-playlist="kpfs" id="next-black"></div>
+                <div class="amplitude-repeat" data-amplitude-playlist="kpfs" id="repeat-black"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+  <script type="text/javascript">
+    Amplitude.init({
+      "songs": [
+        {
+          "name": "Mazurka de Salon Op. 16 by Franz Doppler (excerpt)",
+          "artist": "Kathleen Purcell",
+          "album": "Kathleen Purcell",
+          "url": "doppler-excerpt.mp3",
+          "cover_art_url": "/Kathy.jpg"
+        }
+      ],
+      "playlists": {
+        "kpfs": {
+          songs: [
+            {
+              "name": "Mazurka de Salon Op. 16 by Franz Doppler (excerpt)",
+              "artist": "Kathleen Purcell",
+              "url": "doppler-excerpt.mp3",
+              "cover_art_url": "/Kathy.jpg"
+            },
+            {
+              "name": "Brian Boru's March (excerpt)",
+              "artist": "Kathleen Purcell",
+              "url": "brian-boru-excerpt-applause.mp3",
+              "cover_art_url": "/Kathy.jpg"
+            },
+            {
+              "name": "Piccolo Concerto in C Op. 44 No. 11 by Antonio Vivaldi (excerpt)",
+              "artist": "Kathleen Purcell",
+              "url": "vivaldi-piccolo-concerto-excerpt.mp3",
+              "cover_art_url": "/Kathy.jpg"
+            },
+            {
+              "name": "Adagio in g by Remo Giazotto, based on a theme by Tomaso Albinoni (excerpt)",
+              "artist": "Kathleen Purcell",
+              "url": "albinoni-adagio-excerpt.mp3",
+              "cover_art_url": "/Kathy.jpg"
+            },
+            {
+              "name": "Aria Op. 48, No. 1 by Ernst von Dohnanyi (excerpt)",
+              "artist": "Kathleen Purcell",
+              "url": "dohnanyi-aria-excerpt-applause.mp3",
+              "cover_art_url": "/Kathy.jpg"
+            }
+          ]
+        }
+      }
+    });
+  </script>
+
