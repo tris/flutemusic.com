@@ -22,121 +22,94 @@ redirect_from: /listen.html
    </tr>
 </table>
 
-    <link rel="stylesheet" type="text/css" href="css/foundation.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i" rel="stylesheet">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@4.0.0/dist/amplitude.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/player.css"/>
-
-    <div class="grid-x">
-        <div id="black-player">
-          <div id="black-player-playlist">
-            <div class="black-player-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="0" data-amplitude-playlist="kpfs">
-              <img src="/Kathy.jpg">
-              <div class="song-meta-container">
-                <span class="individual-song-name">Mazurka de Salon Op. 16 by Franz Doppler (excerpt)</span>
-                <span class="individual-song-artist">Kathleen Purcell</span>
-              </div>
-            </div>
-            <div class="black-player-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="1" data-amplitude-playlist="kpfs">
-              <img src="/Kathy.jpg">
-              <div class="song-meta-container">
-                <span class="individual-song-name">Brian Boru's March (excerpt)</span>
-                <span class="individual-song-artist">Kathleen Purcell</span>
-              </div>
-            </div>
-            <div class="black-player-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="2" data-amplitude-playlist="kpfs">
-              <img src="/Kathy.jpg">
-              <div class="song-meta-container">
-                <span class="individual-song-name">Piccolo Concerto in C Op. 44 No. 11 by Antonio Vivaldi (excerpt)</span>
-                <span class="individual-song-artist">Kathleen Purcell</span>
-              </div>
-            </div>
-            <div class="black-player-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="3" data-amplitude-playlist="kpfs">
-              <img src="/Kathy.jpg">
-              <div class="song-meta-container">
-                <span class="individual-song-name">Adagio in g by Remo Giazotto, based on a theme by Tomaso Albinoni (excerpt)</span>
-                <span class="individual-song-artist">Kathleen Purcell</span>
-              </div>
-            </div>
-            <div class="black-player-song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="4" data-amplitude-playlist="kpfs">
-              <img src="/Kathy.jpg">
-              <div class="song-meta-container">
-                <span class="individual-song-name">Aria Op. 48, No. 1 by Ernst von Dohnanyi (excerpt)</span>
-                <span class="individual-song-artist">Kathleen Purcell</span>
-              </div>
-            </div>
-          </div>
-          <div id="black-player-controls">
-            <img data-amplitude-song-info="cover_art_url" data-amplitude-playlist="kpfs" class="playlist-album-art"/>
-            <div class="black-player-controls-container">
-              <span data-amplitude-song-info="name" data-amplitude-playlist="kpfs" class="song-name"></span>
-              <span data-amplitude-song-info="artist" data-amplitude-playlist="kpfs" class="song-artist"></span>
-
-              <div id="progress-container-black">
-                <input type="range" class="amplitude-song-slider" data-amplitude-playlist="kpfs"/>
-                <progress id="song-played-progress-black" class="amplitude-song-played-progress" data-amplitude-playlist="kpfs"></progress>
-                <progress id="song-buffered-progress-black" class="amplitude-buffered-progress" value="0"></progress>
-              </div>
-
-              <div>
-                <div class="amplitude-shuffle amplitude-shuffle-off" data-amplitude-playlist="kpfs" id="shuffle-black"></div>
-                <div class="amplitude-prev" data-amplitude-playlist="kpfs" id="previous-black"></div>
-                <div class="amplitude-play-pause" data-amplitude-playlist="kpfs" id="play-pause-black"></div>
-                <div class="amplitude-next" data-amplitude-playlist="kpfs" id="next-black"></div>
-                <div class="amplitude-repeat" data-amplitude-playlist="kpfs" id="repeat-black"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-
-  <script type="text/javascript">
-    Amplitude.init({
-      "songs": [
-        {
-          "name": "Mazurka de Salon Op. 16 by Franz Doppler (excerpt)",
-          "artist": "Kathleen Purcell",
-          "album": "Kathleen Purcell",
-          "url": "doppler-excerpt.mp3",
-          "cover_art_url": "/Kathy.jpg"
-        }
-      ],
-      "playlists": {
-        "kpfs": {
-          songs: [
-            {
-              "name": "Mazurka de Salon Op. 16 by Franz Doppler (excerpt)",
-              "artist": "Kathleen Purcell",
-              "url": "doppler-excerpt.mp3",
-              "cover_art_url": "/Kathy.jpg"
-            },
-            {
-              "name": "Brian Boru's March (excerpt)",
-              "artist": "Kathleen Purcell",
-              "url": "brian-boru-excerpt-applause.mp3",
-              "cover_art_url": "/Kathy.jpg"
-            },
-            {
-              "name": "Piccolo Concerto in C Op. 44 No. 11 by Antonio Vivaldi (excerpt)",
-              "artist": "Kathleen Purcell",
-              "url": "vivaldi-piccolo-concerto-excerpt.mp3",
-              "cover_art_url": "/Kathy.jpg"
-            },
-            {
-              "name": "Adagio in g by Remo Giazotto, based on a theme by Tomaso Albinoni (excerpt)",
-              "artist": "Kathleen Purcell",
-              "url": "albinoni-adagio-excerpt.mp3",
-              "cover_art_url": "/Kathy.jpg"
-            },
-            {
-              "name": "Aria Op. 48, No. 1 by Ernst von Dohnanyi (excerpt)",
-              "artist": "Kathleen Purcell",
-              "url": "dohnanyi-aria-excerpt-applause.mp3",
-              "cover_art_url": "/Kathy.jpg"
-            }
-          ]
-        }
-      }
-    });
-  </script>
-
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/skin/pink.flag/css/jplayer.pink.flag.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/add-on/jplayer.playlist.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/add-on/jquery.jplayer.inspector.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+	new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_1",
+		cssSelectorAncestor: "#jp_container_1"
+	}, [
+		{
+			title:"Mazurka de Salon Op. 16 by Franz Doppler (excerpt)",
+			mp3:"doppler-excerpt.mp3",
+		},
+		{
+			title:"Brian Boru's March (excerpt)",
+			mp3:"brian-boru-excerpt-applause.mp3",
+		},
+		{
+			title:"Piccolo Concerto in C Op. 44 No. 11 by Antonio Vivaldi (excerpt)",
+			mp3:"vivaldi-piccolo-concerto-excerpt.mp3",
+		},
+		{
+			title:"Adagio in g by Remo Giazotto, based on a theme by Tomaso Albinoni (excerpt)",
+			mp3:"albinoni-adagio-excerpt.mp3",
+		},
+		{
+			title:"Aria Op. 48, No. 1 by Ernst von Dohnanyi (excerpt)",
+			mp3:"dohnanyi-aria-excerpt-applause.mp3",
+		}
+	], {
+		swfPath: "https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer",
+		supplied: "oga, mp3",
+		wmode: "window",
+		useStateClassSkin: true,
+		autoBlur: false,
+		smoothPlayBar: true,
+		keyEnabled: true
+	});
+//	$("#jplayer_inspector_1").jPlayerInspector({jPlayer:$("#jquery_jplayer_1")});
+});
+//]]>
+</script>
+<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+	<div class="jp-type-playlist">
+		<div class="jp-gui jp-interface">
+			<div class="jp-volume-controls">
+				<button class="jp-mute" role="button" tabindex="0">mute</button>
+				<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+				<div class="jp-volume-bar">
+					<div class="jp-volume-bar-value"></div>
+				</div>
+			</div>
+			<div class="jp-controls-holder">
+				<div class="jp-controls">
+					<button class="jp-previous" role="button" tabindex="0">previous</button>
+					<button class="jp-play" role="button" tabindex="0">play</button>
+					<button class="jp-stop" role="button" tabindex="0">stop</button>
+					<button class="jp-next" role="button" tabindex="0">next</button>
+				</div>
+				<div class="jp-progress">
+					<div class="jp-seek-bar">
+						<div class="jp-play-bar"></div>
+					</div>
+				</div>
+				<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+				<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+				<div class="jp-toggles">
+					<button class="jp-repeat" role="button" tabindex="0">repeat</button>
+					<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
+				</div>
+			</div>
+		</div>
+		<div class="jp-playlist">
+			<ul>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+		<div class="jp-no-solution">
+			<span>Update Required</span>
+			To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+		</div>
+	</div>
+</div>
+<div id="jplayer_inspector_1"></div>
