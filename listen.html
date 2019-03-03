@@ -22,94 +22,18 @@ redirect_from: /listen.html
    </tr>
 </table>
 
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/skin/pink.flag/css/jplayer.pink.flag.min.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/add-on/jplayer.playlist.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/add-on/jquery.jplayer.inspector.min.js"></script>
-<script type="text/javascript">
-//<![CDATA[
-$(document).ready(function(){
-	new jPlayerPlaylist({
-		jPlayer: "#jquery_jplayer_1",
-		cssSelectorAncestor: "#jp_container_1"
-	}, [
-		{
-			title:"Mazurka de Salon Op. 16 by Franz Doppler (excerpt)",
-			mp3:"doppler-excerpt.mp3",
-		},
-		{
-			title:"Brian Boru's March (excerpt)",
-			mp3:"brian-boru-excerpt-applause.mp3",
-		},
-		{
-			title:"Piccolo Concerto in C Op. 44 No. 11 by Antonio Vivaldi (excerpt)",
-			mp3:"vivaldi-piccolo-concerto-excerpt.mp3",
-		},
-		{
-			title:"Adagio in g by Remo Giazotto, based on a theme by Tomaso Albinoni (excerpt)",
-			mp3:"albinoni-adagio-excerpt.mp3",
-		},
-		{
-			title:"Aria Op. 48, No. 1 by Ernst von Dohnanyi (excerpt)",
-			mp3:"dohnanyi-aria-excerpt-applause.mp3",
-		}
-	], {
-		swfPath: "https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer",
-		supplied: "oga, mp3",
-		wmode: "window",
-		useStateClassSkin: true,
-		autoBlur: false,
-		smoothPlayBar: true,
-		keyEnabled: true
-	});
-//	$("#jplayer_inspector_1").jPlayerInspector({jPlayer:$("#jquery_jplayer_1")});
-});
-//]]>
-</script>
-<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
-	<div class="jp-type-playlist">
-		<div class="jp-gui jp-interface">
-			<div class="jp-volume-controls">
-				<button class="jp-mute" role="button" tabindex="0">mute</button>
-				<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
-				<div class="jp-volume-bar">
-					<div class="jp-volume-bar-value"></div>
-				</div>
-			</div>
-			<div class="jp-controls-holder">
-				<div class="jp-controls">
-					<button class="jp-previous" role="button" tabindex="0">previous</button>
-					<button class="jp-play" role="button" tabindex="0">play</button>
-					<button class="jp-stop" role="button" tabindex="0">stop</button>
-					<button class="jp-next" role="button" tabindex="0">next</button>
-				</div>
-				<div class="jp-progress">
-					<div class="jp-seek-bar">
-						<div class="jp-play-bar"></div>
-					</div>
-				</div>
-				<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
-				<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
-				<div class="jp-toggles">
-					<button class="jp-repeat" role="button" tabindex="0">repeat</button>
-					<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
-				</div>
-			</div>
-		</div>
-		<div class="jp-playlist">
-			<ul>
-				<li>&nbsp;</li>
-			</ul>
-		</div>
-		<div class="jp-no-solution">
-			<span>Update Required</span>
-			To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-		</div>
-	</div>
-</div>
-<div id="jplayer_inspector_1"></div>
+<script src="modernizr.custom.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js.cookie.js"></script>
+<link rel="stylesheet" href="ableplayer.min.css" type="text/css"/>
+<script src="ableplayer.js"></script>
+
+<audio id="audio1" width="480" preload="auto" data-able-player data-root-path=".">
+</audio>
+
+<ul class="able-playlist" data-player="audio1" data-embedded>
+  <li data-mp3="doppler-excerpt.mp3">Mazurka de Salon Op. 16 by Franz Doppler (excerpt)</li>
+  <li data-mp3="brian-boru-excerpt-applause.mp3">Brian Boru's March (excerpt)</li>
+  <li data-mp3="vivaldi-piccolo-concerto-excerpt.mp3">Piccolo Concerto in C Op. 44 No. 11 by Antonio Vivaldi (excerpt)</li>
+  <li data-mp3="dohnanyi-aria-excerpt-applause.mp3">Aria Op. 48, No. 1 by Ernst von Dohnanyi (excerpt)</li>
+</ul>
