@@ -8,6 +8,10 @@ defaults:
 gems:
   - jekyll-redirect-from
 
+timezone: America/Los_Angeles
+
+future: true
+
 host: 0.0.0.0
 port: 4000
 baseurl: ""
