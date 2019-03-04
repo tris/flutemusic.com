@@ -1,9 +1,11 @@
-- Make concert schedule data-driven.  Dates can be normalized:
+Concert schedule:
 
-http://stackoverflow.com/questions/7395520/how-does-jekyll-date-formatting-work
+- Use FullCalendar to render upcoming events:
+  https://www.raymondcamden.com/2017/02/24/an-example-of-a-static-site-with-a-dynamic-calendar
 
-- Start doing "posts" -- add basic blog functionality.
+- Convert remaining pre-2015 concerts to Markdown files
 
-- Figure out why pages aren't inheriting default layout (from _config.yml).
+- Make generated Markdown files contain useful content, and link to them
 
-- Use a more modern audio player on "listen" page.  audio.js?
+- Make it possible to add events using a web form:
+  https://staticman.net/
