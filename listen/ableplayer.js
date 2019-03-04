@@ -269,6 +269,9 @@
     if ($(media).data('speed-icons') === 'arrows') {
       this.speedIcons = 'arrows';
     }
+    else if ($(media).data('speed-icons') === 'none') {
+      this.speedIcons = null;
+    }
     else {
       this.speedIcons = 'animals';
     }
@@ -3986,7 +3989,7 @@
     var bll = [];
     var blr = [];
 
-    if (this.isPlaybackRateSupported()) {
+    if (this.isPlaybackRateSupported() && this.speedIcons) {
       bll.push('slower');
       bll.push('faster');
     }
@@ -7700,7 +7703,7 @@
       statusBarWidthBreakpoint = 300;
       statusBarHeight = this.$statusBarDiv.height();
       speedHeight = this.$statusBarDiv.find('span.able-speed').height();
-      if (speedHeight > (statusBarHeight + 5)) {
+      if (speedHeight > (statusBarHeight + 5) || !this.speedIcons) {
         // speed bar is wrapping (happens often in German player)
         this.$statusBarDiv.find('span.able-speed').hide();
         this.hidingSpeed = true;
