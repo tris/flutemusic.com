@@ -19,13 +19,16 @@ div {
   margin: 0 auto;
 }
 
-.fc-time, .fc-title, .fc-content {
-  white-space: normal;
+.fc-content {
   text-align: left;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
+}
+
+.fc-title {
+ white-space: normal;
 }
 
 .past,
