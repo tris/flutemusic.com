@@ -19,6 +19,11 @@ div {
   margin: 0 auto;
 }
 
+.fc-time, .fc-title, .fc-content {
+  white-space: normal;
+  text-align: left;
+}
+
 .past,
 .past a {
   color:#777777;
