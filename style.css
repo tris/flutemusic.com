@@ -22,6 +22,10 @@ div {
 .fc-time, .fc-title, .fc-content {
   white-space: normal;
   text-align: left;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .past,
