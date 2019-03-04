@@ -8,9 +8,14 @@ permalink: events.json
 {% for post in site.posts %}
 	{
 		"title": "{{ post.title | escape | replace: "&quot;", '\"' }}",
+		{% capture hhmmss %}{{ post.date | date: '%H%M%S' }}{% endcapture -%}
+		{% if hhmmss == '000000' -%}
+		"start": "{{ post.date | date: '%Y%m%d' }}",
+		"allDay": true
+		{% else -%}
 		"start": "{{ post.date | date: '%Y%m%dT%H%M%S' }}",
 		"end": "{{ post.date | date: '%s' | plus: 7200 | date: '%Y%m%dT%H%M%S' }}"
-	}
-	{%unless forloop.last %},{%endunless%}
+		{% endif %}
+	}{% unless forloop.last %},{% endunless -%}
 {% endfor %}
 ]

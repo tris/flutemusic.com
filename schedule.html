@@ -56,7 +56,12 @@ $(document).ready(function() {
       <span>
       {% endif %}
         <b>{{ post.title }}</b><br>
-        <a href="http://www.google.com/calendar/render?action=TEMPLATE&text={{ post.title | url_encode }}&dates={{ post.date | date: '%Y%m%dT%H%M%S' }}/{{ post.date | date: "%s" | plus: 7200 | date: '%Y%m%dT%H%M%S' }}&ctz=America/Los_Angeles&&details={{ post.content | url_encode }}&location={{ post.location | url_encode }}&trp=false &sprop=&sprop=name:" target="_blank" rel="nofollow">{{ post.date | date: '%A, %B %-d, %Y, %l:%M %p' }}</a><br>
+        {% capture hhmmss %}{{ post.date | date: '%H%M%S' }}{% endcapture %}
+        {% if hhmmss == '000000' %}
+        {{ post.date | date: '%A, %B %-d, %Y' }}<br>
+        {% else %}
+        <a href="http://www.google.com/calendar/render?action=TEMPLATE&text={{ post.title | url_encode }}&dates={{ post.date | date: '%Y%m%dT%H%M%S' }}/{{ post.date | date: "%s" | plus: 7200 | date: '%Y%m%dT%H%M%S' }}&ctz=America/Los_Angeles&details={{ post.content | url_encode }}&location={{ post.location | url_encode }}&trp=false &sprop=&sprop=name:" target="_blank" rel="nofollow">{{ post.date | date: '%A, %B %-d, %Y, %l:%M %p' }}</a><br>
+        {% endif %}
         {% if post.location %}
         <a href="https://maps.google.com/maps?q={{ post.location | url_encode }}">{{ post.location }}</a></br>
         {% endif %}
