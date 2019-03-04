@@ -1,7 +1,10 @@
-all:
+all: install
 	bundle exec jekyll build
 
-serve:
+serve: install
 	bundle exec jekyll serve --incremental
 
-.PHONY: all serve
+install:
+	bundle install --quiet
+
+.PHONY: all serve install
