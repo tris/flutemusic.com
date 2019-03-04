@@ -14,6 +14,11 @@ div {
   width:750px;
 }
 
+#calendar {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .past,
 .past a {
   color:#777777;

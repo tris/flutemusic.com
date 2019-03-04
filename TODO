@@ -1,8 +1,5 @@
 Concert schedule:
 
-- Use FullCalendar to render upcoming events:
-  https://www.raymondcamden.com/2017/02/24/an-example-of-a-static-site-with-a-dynamic-calendar
-
 - Convert remaining pre-2015 concerts to Markdown files
 
 - Make generated Markdown files contain useful content, and link to them
