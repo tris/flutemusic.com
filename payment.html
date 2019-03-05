@@ -31,11 +31,11 @@ redirect_from: /payment.html
 
 <div class="float7Left">
 
-  <form action="https://wt-d38e16bffc5a214a1dafc89e34989660-0.run.webtask.io/stripe-payment/payment?currency=USD&amount=8400&description=60%20minutes%20of%20flute%20lessons" method="POST">
+  <form action="https://tris.net/flutemusic.cgi" method="POST">
 
-    <select id="amount">
+    <select id="dollars">
       <optgroup label="30 Minute Lessons">
-        <option value="84">2 Weeks of 30 Minute Lessons $84.00</option>
+        <option value="84" selected>2 Weeks of 30 Minute Lessons $84.00</option>
         <option value="126">3 Weeks of 30 Minute Lessons $126.00</option>
         <option value="168">4 Weeks of 30 Minute Lessons $168.00</option>
         <option value="210">5 Weeks of 30 Minute Lessons $210.00</option>
@@ -54,6 +54,10 @@ redirect_from: /payment.html
       </optgroup>
     </select>
 
+    <input type="hidden" id="token" name="token" />
+    <input type="hidden" id="amount" name="amount" />
+    <input type="hidden" id="description" name="description" value="Flute Lessons" />
+
     <button id='paymentButton'>Pay with Card</button>
 
     <script
@@ -69,7 +73,7 @@ redirect_from: /payment.html
         description: 'Flute Lessons',
         bitcoin: false,
         token: function(token) {
-          $('input#stripeToken').val(token.id);
+          $('input#token').val(token.id);
           $('form').submit();
         }
       });
@@ -79,7 +83,7 @@ redirect_from: /payment.html
 
         $('#error_explanation').html('');
 
-        var amount = $('select#amount').val();
+        var amount = $('select#dollars').val();
         amount = amount.replace(/\$/g, '').replace(/\,/g, '')
 
         amount = parseFloat(amount);
@@ -92,6 +96,7 @@ redirect_from: /payment.html
         }
         else {
           amount = amount * 100; // Needs to be an integer!
+          $('input#amount').val(amount);
           handler.open({
             amount: Math.round(amount)
           })
