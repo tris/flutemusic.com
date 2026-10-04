@@ -1,0 +1,45 @@
+---
+import { render } from 'astro:content';
+import { getConcerts } from '@/lib/concerts';
+import { concertDate, concertDateLabel, eventTimes, googleCalendarLink } from '@/lib/concert-dates';
+
+const posts = await getConcerts();
+const now = Date.now();
+const next = posts.filter((post) => concertDate(post.data.date).toMillis() > now).at(-1);
+const defaultDate = next ? concertDate(next.data.date).toFormat('yyyy-LL') : undefined;
+const concerts = await Promise.all(posts.map(async (post) => ({ post, ...await render(post) })));
+---
+<script is:inline src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script is:inline src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script is:inline src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css" />
+<link rel="stylesheet" media="print" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.print.css" />
+<div id="calendar" data-default-date={defaultDate}></div>
+<script is:inline>
+  $(document).ready(function () {
+    var defaultDate = document.getElementById('calendar').dataset.defaultDate;
+    $('#calendar').fullCalendar({ events: '/events.json', ...(defaultDate ? { defaultDate: defaultDate } : {}) });
+  });
+</script>
+
+<h2><i>Upcoming Concerts</i></h2>
+<ul>
+  {concerts.map(({ post, Content }) => (
+    <li>
+      <span class:list={{ past: concertDate(post.data.date).toMillis() < now }}>
+        <b>{post.data.title}</b><br />
+        {eventTimes(post.data.date).allDay ? concertDateLabel(post.data.date) : (
+          <a href={googleCalendarLink(post.data.title, post.data.date, post.rendered?.html ?? post.body ?? '', post.data.location)} target="_blank" rel="nofollow noopener">
+            {concertDateLabel(post.data.date)}
+          </a>
+        )}<br />
+        {post.data.location && (
+          <Fragment>
+            <a href={`https://maps.google.com/maps?q=${encodeURIComponent(post.data.location)}`}>{post.data.location}</a><br />
+          </Fragment>
+        )}
+        <Content />
+      </span>
+    </li>
+  ))}
+</ul>

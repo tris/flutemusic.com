@@ -1,0 +1,28 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import { getConcerts } from '@/lib/concerts';
+import { concertPath } from '@/lib/concert-dates';
+
+export async function getStaticPaths() {
+  const routes = new Map<string, CollectionEntry<'concerts'>>();
+  for (const post of await getConcerts()) {
+    const path = concertPath(post.id, post.data.date);
+    const previous = routes.get(path);
+    // The two 2015-02-14 performances historically share a URL and identical copy.
+    // Keep both in the feed/schedule, but never silently overwrite different content.
+    if (previous && (previous.body !== post.body || previous.data.title !== post.data.title)) {
+      throw new Error(`Concert URL collision with different content: ${path}`);
+    }
+    if (!previous) routes.set(path, post);
+  }
+  return [...routes].map(([concert, post]) => ({ params: { concert }, props: { post } }));
+}
+
+interface Props { post: CollectionEntry<'concerts'> }
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<SiteLayout title={post.data.title}>
+  <Content />
+</SiteLayout>
