@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Biography",
+    "url": "bios"
+  },
+  {
+    "title": "Reviews",
+    "url": "reviews"
+  },
+  {
+    "title": "Listen",
+    "url": "listen"
+  },
+  {
+    "title": "Concert Schedule",
+    "url": "schedule"
+  },
+  {
+    "title": "Lessons",
+    "url": "lessons"
+  },
+  {
+    "title": "Payment",
+    "url": "payment"
+  }
+]

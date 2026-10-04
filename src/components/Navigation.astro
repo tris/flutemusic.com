@@ -1,0 +1,11 @@
+---
+import navigation from '@/data/navigation.json';
+const current = Astro.url.pathname.replaceAll('/', '');
+---
+<span class="links">
+  <a href="/">Home</a>
+  {navigation.map(({ title, url }) => (
+    <Fragment>{' | '}{current === url ? <span aria-current="page">{title}</span> : <a href={`/${url}/`}>{title}</a>}</Fragment>
+  ))}
+  {' | '}<a href="mailto:contact@flutemusic.com">Contact</a>
+</span>

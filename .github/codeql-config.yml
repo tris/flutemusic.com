@@ -1,2 +1,2 @@
 paths-ignore:
-  - "listen/**"
+  - "public/listen/**"

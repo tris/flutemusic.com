@@ -1,0 +1,27 @@
+{
+  "name": "flutemusic-com",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "node --test --test-isolation=none tests/*.test.mjs",
+    "verify": "npm run check && npm run build && npm test"
+  },
+  "dependencies": {
+    "astro": "7.3.5",
+    "luxon": "^3.7.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@types/luxon": "^3.7.1",
+    "cheerio": "^1.1.2",
+    "typescript": "^5.9.3"
+  }
+}

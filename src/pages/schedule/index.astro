@@ -1,0 +1,25 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import Navigation from '@/components/Navigation.astro';
+import ConcertSchedule from '@/components/ConcertSchedule.astro';
+import ConcertArchive from '@/components/ConcertArchive.astro';
+---
+<SiteLayout title="Kathleen Purcell Flute Studios: Concert schedule">
+<img src="/KPFS1.jpg" />
+<table width="960">
+ <tbody><tr><td width="175"></td>
+     <td>
+
+<Navigation />
+
+</td>
+ </tr>
+</tbody></table>
+
+<p><i><b>Concert Schedule</b></i></p>
+
+<ConcertSchedule />
+<ConcertArchive />
+
+
+</SiteLayout>

@@ -1,0 +1,114 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import Navigation from '@/components/Navigation.astro';
+---
+<SiteLayout title="Kathleen Purcell Flute Studios: Payment">
+<div id="content">
+
+
+<div class="float7Logo">
+<img src="/KPFS1.jpg" />
+</div>
+
+<div class="float7Nav">
+
+<Navigation />
+
+
+
+
+</div>
+
+<!--
+<div class="float7Steps">
+<center><img src="image-files/payment-steps7.jpg" alt="Payment Steps" height="373" width="934" border="0" / /></center>
+</div>
+-->
+
+<br clear="all" />
+
+<div class="float7Left">
+
+  <form action="https://tris.net/flutemusic.cgi" method="POST">
+
+    <select id="dollars">
+      <optgroup label="30 Minute Lessons">
+        <option value="96" selected="">2 Weeks of 30 Minute Lessons $96.00</option>
+        <option value="144">3 Weeks of 30 Minute Lessons $144.00</option>
+        <option value="192">4 Weeks of 30 Minute Lessons $192.00</option>
+        <option value="240">5 Weeks of 30 Minute Lessons $240.00</option>
+      </optgroup>
+      <optgroup label="45 Minute Lessons">
+        <option value="144">2 Weeks of 45 Minute Lessons $144.00</option>
+        <option value="216">3 Weeks of 45 Minute Lessons $216.00</option>
+        <option value="288">4 Weeks of 45 Minute Lessons $288.00</option>
+        <option value="360">5 Weeks of 45 Minute Lessons $360.00</option>
+      </optgroup>
+      <optgroup label="60 Minute Lessons">
+        <option value="192">2 Weeks of 60 Minute Lessons $192.00</option>
+        <option value="288">3 Weeks of 60 Minute Lessons $288.00</option>
+        <option value="384">4 Weeks of 60 Minute Lessons $384.00</option>
+        <option value="480">5 Weeks of 60 Minute Lessons $480.00</option>
+      </optgroup>
+    </select>
+
+    <input type="hidden" id="token" name="token" />
+    <input type="hidden" id="amount" name="amount" />
+    <input type="hidden" id="description" name="description" value="Flute Lessons" />
+
+    <button id="paymentButton">Pay with Card</button>
+
+    <script is:inline src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+    <script is:inline src="https://checkout.stripe.com/checkout.js"></script>
+    <script is:inline>
+      var handler = StripeCheckout.configure({
+        key: 'pk_live_8I5dx0CoZRIg4mNkPZjGNsVi',
+        locale: 'auto',
+        name: 'Purcell Flute Studios',
+        description: 'Flute Lessons',
+        bitcoin: false,
+        token: function(token) {
+          $('input#token').val(token.id);
+          $('form').submit();
+        }
+      });
+
+      $('#paymentButton').on('click', function(e) {
+        e.preventDefault();
+
+        $('#error_explanation').html('');
+
+        var amount = $('select#dollars').val();
+        amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+
+        amount = parseFloat(amount);
+
+        if (isNaN(amount)) {
+          $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
+        }
+        else if (amount < 5.00) {
+          $('#error_explanation').html('<p>Payment amount must be at least $5.</p>');
+        }
+        else {
+          amount = amount * 100; // Needs to be an integer!
+          $('input#amount').val(amount);
+          handler.open({
+            amount: Math.round(amount)
+          })
+        }
+      });
+
+      // Close Checkout on page navigation
+      $(window).on('popstate', function() {
+        handler.close();
+      });
+    </script>
+
+  </form>
+
+</div>
+
+</div>
+
+
+</SiteLayout>
