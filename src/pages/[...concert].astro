@@ -1,0 +1,19 @@
+---
+// A page for each concert, at Jekyll's address for the post:
+// /concerts/2019/05/05/benefit-concert.html
+import Default from '../layouts/Default.astro';
+import { getConcerts } from '../lib/concerts';
+
+export async function getStaticPaths() {
+  const concerts = await getConcerts();
+  // Two posts share /concerts/2015/02/14/beauty-and-the-beast.html, with the same
+  // title and description. Jekyll wrote the page twice; once is enough.
+  const paths = new Map(concerts.map(({ path, title, html }) => [path, { params: { concert: path }, props: { title, html } }]));
+  return [...paths.values()];
+}
+
+const { title, html } = Astro.props;
+---
+<Default title={title} clientRouter={false}>
+<Fragment set:html={html} />
+</Default>

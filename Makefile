@@ -1,11 +1,13 @@
 all: install
-	bundle exec jekyll build
+	npm run build
 
 serve: install
-	bundle exec jekyll serve --incremental
+	npm run dev
+
+test: all
+	npm test
 
 install:
-	gem list bundler | grep bundler >/dev/null || sudo gem install bundler
-	bundle install --quiet
+	npm install --silent
 
-.PHONY: all serve install
+.PHONY: all serve test install

@@ -1,0 +1,42 @@
+---
+import Default from '../../layouts/Default.astro';
+import Banner from '../../components/Banner.astro';
+import Nav from '../../components/Nav.astro';
+import '../../vendor/ableplayer-3.2.0/ableplayer.min.css';
+---
+<Default title="Kathleen Purcell Flute Studios: Listen">
+
+<Banner />
+<table width=960>
+ <tr><td width=175></td>
+     <td>
+
+<Nav current="listen" />
+
+</td>
+ </tr>
+</table>
+<table>
+ <tr>
+     <td width=10></td><td>
+    <i><b>Excerpts from live performances</b></i></td>
+   </tr>
+</table>
+
+<script>
+  import '../../scripts/able-player';
+</script>
+
+{/* data-able-player-deferred: started by src/scripts/able-player.ts, not by Able Player itself. */}
+<audio id="audio1" width="525" preload="metadata" data-able-player-deferred data-root-path="/listen/" data-speed-icons="none">
+</audio>
+
+<ul class="able-playlist" data-player="audio1" data-embedded>
+  <li data-mp3="/listen/doppler-excerpt.mp3">Mazurka de Salon Op. 16 by Franz Doppler (excerpt)</li>
+  <li data-mp3="/listen/brian-boru-excerpt-applause.mp3">Brian Boru's March (excerpt)</li>
+  <li data-mp3="/listen/vivaldi-piccolo-concerto-excerpt.mp3">Piccolo Concerto in C Op. 44 No. 11 by Antonio Vivaldi (excerpt)</li>
+  <li data-mp3="/listen/albinoni-adagio-excerpt.mp3">Adagio in g by Remo Giazotto, based on a theme by Tomaso Albinoni (excerpt)</li>
+  <li data-mp3="/listen/dohnanyi-aria-excerpt-applause.mp3">Aria Op. 48, No. 1 by Ernst von Dohnanyi (excerpt)</li>
+</ul>
+
+</Default>

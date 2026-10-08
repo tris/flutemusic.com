@@ -1,0 +1,24 @@
+---
+// _includes/nav.html and _data/nav.yaml: the current page is plain text, the others are links.
+const crumbs = [
+  { title: 'Biography', url: 'bios' },
+  { title: 'Reviews', url: 'reviews' },
+  { title: 'Listen', url: 'listen' },
+  { title: 'Concert Schedule', url: 'schedule' },
+  { title: 'Lessons', url: 'lessons' },
+  { title: 'Payment', url: 'payment' },
+];
+
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+---
+<span class="links">
+<a href="/">Home</a>
+{crumbs.map(({ title, url }) =>
+  url === current ? <Fragment>{'\n'}| {title}</Fragment> : <Fragment>{'\n'}| <a href={`/${url}/`}>{title}</a></Fragment>
+)}
+| <a href="mailto:contact@flutemusic.com">Contact</a>
+</span>

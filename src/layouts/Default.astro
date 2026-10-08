@@ -1,0 +1,35 @@
+---
+// The Jekyll site's head.html and foot.html, with Astro's client router added.
+//
+// The email_off comments tell Cloudflare not to rewrite the email addresses on
+// the page. Its decoder script only runs on the first page a visitor opens, so
+// with the client router every later page would show "[email protected]" and
+// broken Contact links.
+import { ClientRouter } from 'astro:transitions';
+import '../styles/style.css';
+
+interface Props {
+  title: string;
+  // Off for /payment/, whose Stripe Checkout script needs a fresh page load, and for
+  // the old pages and concert pages, which stay as Jekyll published them. Links to a
+  // page without the router load it afresh.
+  clientRouter?: boolean;
+}
+
+const { title, clientRouter = true } = Astro.props;
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{title}</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+    {clientRouter && <ClientRouter />}
+    <slot name="head" />
+  </head>
+  <body>
+<!--email_off-->
+<slot />
+<!--/email_off-->
+  </body>
+</html>

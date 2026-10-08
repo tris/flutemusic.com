@@ -1,0 +1,9 @@
+# The main pages' old addresses, which jekyll-redirect-from sent on to the new ones.
+/bios.html      /bios/      301
+/reviews.html   /reviews/   301
+/listen.html    /listen/    301
+/schedule.html  /schedule/  301
+/lessons.html   /lessons/   301
+/payment.html   /payment/   301
+/press.html     /press/     301
+/thankyou.html  /thankyou/  301
