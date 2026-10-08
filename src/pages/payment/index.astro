@@ -1,0 +1,71 @@
+---
+import Default from '../../layouts/Default.astro';
+import Banner from '../../components/Banner.astro';
+import Nav from '../../components/Nav.astro';
+---
+{/* Without the client router, so that Stripe's Checkout script starts afresh on every visit. */}
+<Default title="Kathleen Purcell Flute Studios: Payment" clientRouter={false}>
+
+<div id="content">
+
+
+<div class="float7Logo">
+<Banner />
+</div>
+
+<div class="float7Nav">
+
+<Nav current="payment" />
+
+</div>
+
+<!--
+<div class="float7Steps">
+<center><img src="image-files/payment-steps7.jpg" alt="Payment Steps" height="373" width="934" border="0" /></center>
+</div>
+-->
+
+<br clear="all">
+
+<div class="float7Left">
+
+  <form action="https://tris.net/flutemusic.cgi" method="POST">
+
+    <select id="dollars">
+      <optgroup label="30 Minute Lessons">
+        <option value="96" selected>2 Weeks of 30 Minute Lessons $96.00</option>
+        <option value="144">3 Weeks of 30 Minute Lessons $144.00</option>
+        <option value="192">4 Weeks of 30 Minute Lessons $192.00</option>
+        <option value="240">5 Weeks of 30 Minute Lessons $240.00</option>
+      </optgroup>
+      <optgroup label="45 Minute Lessons">
+        <option value="144">2 Weeks of 45 Minute Lessons $144.00</option>
+        <option value="216">3 Weeks of 45 Minute Lessons $216.00</option>
+        <option value="288">4 Weeks of 45 Minute Lessons $288.00</option>
+        <option value="360">5 Weeks of 45 Minute Lessons $360.00</option>
+      </optgroup>
+      <optgroup label="60 Minute Lessons">
+        <option value="192">2 Weeks of 60 Minute Lessons $192.00</option>
+        <option value="288">3 Weeks of 60 Minute Lessons $288.00</option>
+        <option value="384">4 Weeks of 60 Minute Lessons $384.00</option>
+        <option value="480">5 Weeks of 60 Minute Lessons $480.00</option>
+      </optgroup>
+    </select>
+
+    <input type="hidden" id="token" name="token" />
+    <input type="hidden" id="amount" name="amount" />
+    <input type="hidden" id="description" name="description" value="Flute Lessons" />
+
+    <button type="button" id='paymentButton'>Pay with Card</button>
+
+    <script>
+      import '../../scripts/payment';
+    </script>
+
+  </form>
+
+</div>
+
+</div>
+
+</Default>

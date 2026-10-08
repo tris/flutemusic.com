@@ -1,0 +1,13 @@
+// Cloudflare Workers settings. Cloudflare serves the build in dist/ itself, except
+// for the MP3s, which go through worker/index.ts so that Safari can play them.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "flutemusic-com",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-08",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/*.mp3"]
+  }
+}

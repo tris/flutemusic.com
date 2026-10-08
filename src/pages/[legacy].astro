@@ -1,0 +1,19 @@
+---
+// Old pages kept as they were, such as the PayPal payment pages and the demo sound
+// clips. Each is a fragment of HTML with its title in front matter, as Jekyll had it.
+import Default from '../layouts/Default.astro';
+
+export function getStaticPaths() {
+  return Object.entries(import.meta.glob<string>('../legacy/*.html', { query: '?raw', import: 'default', eager: true }))
+    .map(([file, source]) => {
+      const [, frontMatter, html] = source.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)!;
+      const title = JSON.parse(frontMatter.match(/^title: (".*")$/m)![1]);
+      return { params: { legacy: file.match(/([^/]+)\.html$/)![1] }, props: { title, html } };
+    });
+}
+
+const { title, html } = Astro.props;
+---
+<Default title={title} clientRouter={false}>
+<Fragment set:html={html} />
+</Default>
