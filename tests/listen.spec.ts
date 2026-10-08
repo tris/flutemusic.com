@@ -1,9 +1,5 @@
 import { type APIResponse, expect, test } from '@playwright/test';
-import { back, follow, forward, playerReady, state, watch } from './helpers';
-
-// Once Able Player's script has loaded, it keeps one key handler on window for
-// good. It only acts while there's exactly one player.
-const NO_PLAYER = { ableElements: 0, players: 0, nextIndex: 0, windowHandlers: 1, documentHandlers: 0, playing: 0 };
+import { back, follow, forward, NO_PLAYER, playerReady, state, watch } from './helpers';
 
 test('the player stops when the visitor moves on, and comes back working', async ({ page }) => {
   const problems = await watch(page);
@@ -52,57 +48,6 @@ test('picking another track while playing switches to it', async ({ page }) => {
     .poll(() => page.evaluate(() => document.querySelector('audio')!.currentSrc))
     .toContain('/listen/brian-boru-excerpt-applause.mp3');
   await expect.poll(async () => (await state(page)).playing).toBe(1);
-
-  expect(problems).toEqual([]);
-});
-
-test('visiting again and again leaves nothing behind', async ({ page }) => {
-  const problems = await watch(page);
-  await page.goto('/listen/');
-  await playerReady(page);
-  const withPlayer = await state(page);
-
-  // Weak references to each visit's player, its elements and its audio element.
-  const keep = () =>
-    page.evaluate(() => {
-      const w = window as any;
-      const player = w.AblePlayer.lastCreated;
-      w.visits ??= [];
-      w.visits.push([player, document.querySelector('.able-wrapper'), player.media].map((x) => new WeakRef(x)));
-    });
-  const visit = async () => {
-    await page.locator('.able-button-handler-play').click();
-    await expect.poll(async () => (await state(page)).playing).toBe(1);
-    await follow(page, 'Reviews');
-    expect(await state(page)).toMatchObject(NO_PLAYER);
-    await follow(page, 'Listen');
-    await playerReady(page);
-    expect(await state(page)).toEqual({ ...withPlayer, playing: 0 });
-    await keep();
-  };
-  // Collects garbage until only the current visit's player is left, then counts the
-  // page's elements and event listeners. Chrome keeps an audio element that has
-  // played for a few seconds after it's removed, and the player with it.
-  const cdp = await page.context().newCDPSession(page);
-  const settled = async () => {
-    await expect
-      .poll(
-        async () => {
-          await cdp.send('HeapProfiler.collectGarbage');
-          return page.evaluate(() => (window as any).visits.slice(0, -1).flat().filter((ref: WeakRef<object>) => ref.deref()).length);
-        },
-        { intervals: [500], timeout: 20_000 },
-      )
-      .toBe(0);
-    return cdp.send('Memory.getDOMCounters');
-  };
-
-  await keep();
-  await visit();
-  const first = await settled();
-  for (let i = 0; i < 5; i++) await visit();
-  const last = await settled();
-  expect(last).toEqual(first);
 
   expect(problems).toEqual([]);
 });

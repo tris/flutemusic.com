@@ -87,6 +87,11 @@ export function state(page: Page): Promise<PageState> {
   });
 }
 
+// The state of a page without a player. Once Able Player's script has loaded, it
+// keeps one key handler on window for good. It only acts while there's exactly one
+// player.
+export const NO_PLAYER = { ableElements: 0, players: 0, nextIndex: 0, windowHandlers: 1, documentHandlers: 0, playing: 0 };
+
 // Stands in for Stripe's checkout.js. checkout.pay() plays the part of the visitor
 // entering a card, and hands back a test token. Nothing here talks to Stripe or to
 // the charging script on tris.net.
